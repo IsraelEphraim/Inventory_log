@@ -1,0 +1,65 @@
+{% extends 'base.html'%}
+
+{% block head%}
+<title>IT LOG System</title>
+{% endblock%}
+
+{% block body%}
+<div class="content">
+    <h1>IT Log</h1>
+    <form action="/" method="POST">
+        <label for="employee_code">Employee Code:</label>
+        <input type="text" name="employee_code" id="employee_code">
+        <br>
+        <label for="employee_name">Employee Name:</label>
+        <input type="text" name="employee_name" id="employee_name">
+        <br>
+        <label for="device_type">Device Type:</label>
+        <select name="device_type" id="device_type" class="input_box" required>
+            <option value="PROJECTOR">PROJECTOR</option>
+            <option value="SERVICE LAPTOP">SERVICE LAPTOP</option>
+            <option value="LAPTOP">LAPTOP</option>
+            <option value="SPEAKER">SPEAKER</option>
+          </select>
+        <br>  
+        <label for="borrow_return">Type:</label>
+        <select name="borrow_return" id="borrow_return" class="input_box" required>
+            <option value="BORROW">BORROW</option>
+            <option value="RETURN">RETURN</option>
+        </select>
+        <input type="submit" value="Add log">
+    </form>
+
+    <br><br>
+
+    <table>
+        <tr>
+            <th>Employee Code</th>
+            <th>Employee Name</th>
+            <th>Device Type</th>
+            <th>Type of log</th>
+            <th>Date Added</th>
+            <th>Time Added</th>
+            <th>Actions</th>
+        </tr>
+        {% for task in tasks%}
+            <tr>
+                <td>{{ task.e_code}}</td>
+                <td>{{ task.e_name}}</td>
+                <td>{{ task.device_type}}</td>
+                <td>{{ task.borrow_return}}</td>
+                <td>{{ task.date_created.date()}}</td>
+                <td>{{ task.date_created.strftime('%H:%M:%S') }}</td>
+                <td>
+                    <a href="/delete/{{task.id}}">Delete</a>
+                    <br>
+                    <a href="">Update</a>
+                </td>
+            </tr>
+        {% endfor %}
+    </table>
+
+    <br>
+
+    
+{% endblock%}

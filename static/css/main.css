@@ -1,0 +1,18 @@
+body {
+    font-family: sans-serif;
+    
+}
+
+table, th, td {
+    border: 1px solid black;
+    text-align: center;
+    
+}
+
+h1 {
+    text-align: center;
+}
+
+#content {
+    width: 10%;
+}
